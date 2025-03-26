@@ -1,11 +1,11 @@
 /**
- * @name VisualRefreshFix
- * @author @sifsen
+ * @name VisualRefreshTweaks
+ * @author @syberiak
  * @version 1.0.0
- * @description Minor fixes for the Visual Refresh
+ * @description Some personal fixes and tweaks for the Discord's visual refresh 
 **/
 
-/* Annoying stuff I want to hide */
+/* Hide stuff */
 button[aria-label="Send a gift"],
 button[aria-label="Open sticker picker"],
 div[aria-label^="Click to react with"],
@@ -17,8 +17,8 @@ div[class^=channelAppLauncher_],
   display: none;
 }
 
-div[class^=jumpToPresentBar] {
-  right: 16px !important;
+.visual-refresh .container__37e49 {
+  padding: 6px;
 }
 
 /* Lower chat field + put typing indicators on top */
@@ -28,21 +28,25 @@ main[class^="chatContent"]>form[class^="form"] {
 }
 
 main[class^="chatContent"]>form[class^="form"]:not(:has(div[class^="typing"])) {
-  margin-top: calc(24px + (var(--space-xs) * 2)) !important;
+  margin-top: calc(12px + (var(--space-xs) * 2)) !important;
 }
 
 main[class^="chatContent"]>form[class^="form"] div[class^="channelTextArea"] {
-  margin-bottom: var(--space-xs) !important;
+  margin-bottom: calc(-8px + (var(--space-xs) * 2)) !important;
 }
 
 div[class^="typing"] {
   position: static !important;
-  margin-top: var(--space-xs);
-  margin-bottom: var(--space-xs);
+  margin-top: var(--space-xxs);
+  margin-bottom: var(--space-xxs);
 }
 
 div[class^="messagesWrapper"] div[class^="scrollerSpacer"] {
   display: none !important;
+}
+
+.messagesWrapper__36d07 {
+	border-bottom: 1px solid var(--border-subtle);
 }
 
 /* Hide pinned guild discover button */
@@ -61,21 +65,8 @@ h3>span>time[aria-label^="Today at"]::before {
 
 .visual-refresh {
 
-  /* Remove user profile overlap from server list */
-  section.panels_c48ade {
-    margin-left: 64px;
-    width: calc(100% - 72px) !important;
-    bottom: 0;
-    border-radius: 0;
-  }
-
-  .visual-refresh .container__37e49 {
-    height: 48px;
-    padding: 6px;
-  }
-
-  nav.wrapper_ef3116.guilds_c48ade {
-    margin-bottom: 0;
+  div.topic__6ec1a {
+    -webkit-app-region: no-drag;
   }
 
   /* Context Menu Padding*/
@@ -102,10 +93,6 @@ h3>span>time[aria-label^="Today at"]::before {
     padding-right: 8px;
   }
 
-  * {
-    --custom-app-top-bar-height: 28px;
-  }
-
   .leading_c38106,
   .trailing_c38106 {
     gap: 2px;
@@ -116,8 +103,58 @@ h3>span>time[aria-label^="Today at"]::before {
     --text-positive: #4cc06c;
   }
 
-  /* Channel Name Offset*/
+  /* Channel Name Offset */
   .container__9293f {
     padding-left: 10px;
   }
+  
+  /* Fix user limit display misaligned */
+  .total__260e1, .users__260e1 {
+    padding: 0;
+  }
+
+  .users__260e1 {
+    padding-left: var(--space-6);
+  }
+
+  .visual-refresh .total__260e1 {
+    padding-right: calc(var(--space-6) / 2);
+  }
+}
+
+/* BetterFolders tweaks */
+.container_c48ade > :not(.base_c48ade):first-child {
+  max-width: 60px !important;
+  margin-top: var(--custom-app-top-bar-height);
+
+  .guilds_c48ade {
+	margin-bottom: var(--space-8);
+  }
+  
+  .wrapper__48112 {
+	width: calc(var(--guildbar-avatar-size) + var(--custom-guild-list-padding)*2);
+  }
+}
+
+
+/* Fix icon sizes in message input */
+main[class^="chatContent"] .lottieIcon__5eb9b {
+	width: 28px !important;
+	height: 28px !important;
+}
+
+main[class^="chatContent"] .spriteContainer__04eed {
+	--custom-emoji-sprite-size: 24px !important;
+}
+
+
+/* Fix weird divs in channel list (doesn't break with banners) */
+nav.container__2637a:not(:has(div.hasBanner_f37cb1)) {
+	ul[aria-label="Channels"]>:nth-child(1) {
+		display: none;
+	}
+}
+
+ul[aria-label="Channels"]>:nth-child(2) {
+	display: none;
 }
