@@ -20,8 +20,4 @@
 
    ![Profile Island](/images/profileisland.png)
 
-- The window titlebar has been shrinked:
-
-   ![Window Title Bar](/images/windowtitlebar.png)
-
    And some more minor fixes, I.E re-adding "Today at" to the timestamp on messages, removing the pinned "Discover Guilds" button, etc...
